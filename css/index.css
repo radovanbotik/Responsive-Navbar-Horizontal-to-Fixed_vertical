@@ -33,10 +33,12 @@ a {
   text-decoration: none;
 }
 
+header {
+  background-color: fuchsia;
+}
 header .navigation {
   position: -webkit-sticky;
   position: sticky;
-  background-color: fuchsia;
   padding: 1.5ex;
   display: flex;
   justify-content: space-between;
@@ -70,7 +72,6 @@ header .navigation__toggle {
   }
 }
 header .dropdown {
-  background-color: blue;
   height: 0;
   overflow: hidden;
   display: flex;
@@ -85,7 +86,7 @@ header .dropdown {
   }
 }
 header .dropdown__show {
-  height: inherit;
+  height: auto;
   padding: 1.5ex;
 }
 

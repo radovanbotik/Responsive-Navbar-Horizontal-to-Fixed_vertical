@@ -65,9 +65,9 @@ a {
   text-decoration: none;
 }
 header {
+  background-color: fuchsia;
   .navigation {
     position: sticky;
-    background-color: fuchsia;
     padding: usePadding(md);
     display: flex;
     justify-content: space-between;
@@ -98,7 +98,6 @@ header {
     }
   }
   .dropdown {
-    background-color: blue;
     height: 0;
     overflow: hidden;
     display: flex;
@@ -111,7 +110,7 @@ header {
     }
 
     &__show {
-      height: inherit;
+      height: auto;
       padding: usePadding(md);
     }
   }

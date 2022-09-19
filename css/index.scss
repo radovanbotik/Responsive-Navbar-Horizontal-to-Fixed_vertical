@@ -20,7 +20,7 @@ $screen-large: 800px;
     @content;
   }
 }
-$paddings: (
+$sizes: (
   xs: 0.5ex,
   sm: 1ex,
   md: 1.5ex,
@@ -36,8 +36,8 @@ $paddings: (
   @return map-get($colors, $color);
 }
 
-@function usePadding($padding) {
-  @return map-get($paddings, $padding);
+@function useSize($size) {
+  @return map-get($sizes, $size);
 }
 
 .material-symbols-outlined {
@@ -68,21 +68,24 @@ header {
   background-color: fuchsia;
   .navigation {
     position: sticky;
-    padding: usePadding(md);
+    padding: useSize(xl) useSize(sm);
     display: flex;
     justify-content: space-between;
     align-items: center;
     &__logo {
       display: flex;
       align-items: center;
-      padding: usePadding(md);
       gap: 2ex;
       img {
         width: 60px;
       }
       h1 {
-        display: none;
+        text-transform: uppercase;
+
         @include screen-lg {
+          // white-space: pre-wrap;
+          font-size: 1rem;
+          width: 10ch;
           display: inline;
         }
       }
@@ -101,17 +104,22 @@ header {
     height: 0;
     overflow: hidden;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
+    justify-content: end;
+    align-content: center;
     gap: 1em;
     @include screen-lg {
       height: 100%;
       flex-direction: column;
-      padding: usePadding(md);
+      justify-content: start;
     }
 
     &__show {
       height: auto;
-      padding: usePadding(md);
+    }
+    &__item {
+      cursor: pointer;
+      padding: useSize(md);
     }
   }
 }

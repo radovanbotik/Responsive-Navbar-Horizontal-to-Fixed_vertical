@@ -39,7 +39,7 @@ header {
 header .navigation {
   position: -webkit-sticky;
   position: sticky;
-  padding: 1.5ex;
+  padding: 4ex 1ex;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,17 +47,18 @@ header .navigation {
 header .navigation__logo {
   display: flex;
   align-items: center;
-  padding: 1.5ex;
   gap: 2ex;
 }
 header .navigation__logo img {
   width: 60px;
 }
 header .navigation__logo h1 {
-  display: none;
+  text-transform: uppercase;
 }
 @media (min-width: 800px) {
   header .navigation__logo h1 {
+    font-size: 1rem;
+    width: 10ch;
     display: inline;
   }
 }
@@ -75,18 +76,23 @@ header .dropdown {
   height: 0;
   overflow: hidden;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
+  justify-content: end;
+  align-content: center;
   gap: 1em;
 }
 @media (min-width: 800px) {
   header .dropdown {
     height: 100%;
     flex-direction: column;
-    padding: 1.5ex;
+    justify-content: start;
   }
 }
 header .dropdown__show {
   height: auto;
+}
+header .dropdown__item {
+  cursor: pointer;
   padding: 1.5ex;
 }
 

@@ -92,9 +92,12 @@ header {
     }
 
     &__toggle {
-      border: 1px solid black;
       display: grid;
       place-items: center;
+      span {
+        color: white;
+        font-size: 2rem;
+      }
       @include screen-lg {
         display: none;
       }
@@ -102,13 +105,17 @@ header {
   }
   .dropdown {
     height: 0;
+    // opacity: 0;
     overflow: hidden;
     display: flex;
     flex-direction: row;
     justify-content: end;
     align-content: center;
     gap: 1em;
+    transition: clip-path 350ms ease-out 150ms;
+    clip-path: polygon(0 100%, 0 100%, 0 0, 0 0);
     @include screen-lg {
+      clip-path: none;
       height: 100%;
       flex-direction: column;
       justify-content: start;
@@ -116,6 +123,8 @@ header {
 
     &__show {
       height: auto;
+      // opacity: 1;
+      clip-path: polygon(100% 100%, 0 100%, 0 0, 100% 0);
     }
     &__item {
       cursor: pointer;

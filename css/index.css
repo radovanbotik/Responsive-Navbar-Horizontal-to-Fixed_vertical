@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Quattrocento&family=Roboto:wght@300&display=swap");
+@font-face {
+  font-family: "Futura";
+  src: url(../assets/Fonts/FuturaCondensedRegular.ttf);
+}
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Quattrocento";
+  display: grid;
+}
+@media (min-width: 800px) {
+  body {
+    grid-template-columns: -webkit-max-content auto;
+    grid-template-columns: max-content auto;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  font-family: inherit;
+  text-decoration: none;
+}
+
+header .navigation {
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: fuchsia;
+  padding: 1.5ex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .navigation__logo {
+  display: flex;
+  align-items: center;
+  gap: 2ex;
+}
+header .navigation__logo img {
+  width: 60px;
+}
+header .navigation__logo h1 {
+  display: none;
+}
+@media (min-width: 800px) {
+  header .navigation__logo h1 {
+    display: inline;
+  }
+}
+header .navigation__toggle {
+  border: 1px solid black;
+  display: grid;
+  place-items: center;
+}
+@media (min-width: 800px) {
+  header .navigation__toggle {
+    display: none;
+  }
+}
+header .dropdown {
+  background-color: blue;
+  height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 1em;
+}
+@media (min-width: 800px) {
+  header .dropdown {
+    height: 100%;
+    flex-direction: column;
+  }
+}
+header .dropdown__show {
+  padding: 1.5ex;
+  height: inherit;
+}
+
+main {
+  height: 400vh;
+}/*# sourceMappingURL=index.css.map */

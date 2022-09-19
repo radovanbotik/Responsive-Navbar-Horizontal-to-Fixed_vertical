@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Quattrocento&family=Roboto:wght@300&display=swap");
+
+@font-face {
+  font-family: "Futura";
+  src: url(../assets/Fonts/FuturaCondensedRegular.ttf);
+}
+
+$colors: (
+  color-bg-main: #131313,
+  color-font-main: white,
+);
+
+$fonts: (
+  Oswald: "Oswald",
+  Quattrocento: "Quattrocento",
+);
+$screen-large: 800px;
+@mixin screen-lg {
+  @media (min-width: #{$screen-large}) {
+    @content;
+  }
+}
+$paddings: (
+  xs: 0.5ex,
+  sm: 1ex,
+  md: 1.5ex,
+  lg: 2ex,
+  xl: 4ex,
+);
+
+@function useFont($font) {
+  @return map-get($fonts, $font);
+}
+
+@function useColor($color) {
+  @return map-get($colors, $color);
+}
+
+@function usePadding($padding) {
+  @return map-get($paddings, $padding);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: useFont(Quattrocento);
+  display: grid;
+  @include screen-lg {
+    grid-template-columns: max-content auto;
+  }
+}
+ul {
+  list-style: none;
+}
+a {
+  font-family: inherit;
+  text-decoration: none;
+}
+header {
+  .navigation {
+    position: sticky;
+    background-color: fuchsia;
+    padding: usePadding(md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__logo {
+      display: flex;
+      align-items: center;
+      gap: 2ex;
+      img {
+        width: 60px;
+      }
+      h1 {
+        display: none;
+        @include screen-lg {
+          display: inline;
+        }
+      }
+    }
+
+    &__toggle {
+      border: 1px solid black;
+      display: grid;
+      place-items: center;
+      @include screen-lg {
+        display: none;
+      }
+    }
+  }
+  .dropdown {
+    background-color: blue;
+
+    height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1em;
+    @include screen-lg {
+      height: 100%;
+      flex-direction: column;
+    }
+
+    &__show {
+      padding: usePadding(md);
+      height: inherit;
+    }
+  }
+}
+main {
+  height: 400vh;
+}

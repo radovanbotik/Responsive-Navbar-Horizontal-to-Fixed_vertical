@@ -75,6 +75,7 @@ header {
     &__logo {
       display: flex;
       align-items: center;
+      padding: usePadding(md);
       gap: 2ex;
       img {
         width: 60px;
@@ -98,7 +99,6 @@ header {
   }
   .dropdown {
     background-color: blue;
-
     height: 0;
     overflow: hidden;
     display: flex;
@@ -107,11 +107,12 @@ header {
     @include screen-lg {
       height: 100%;
       flex-direction: column;
+      padding: usePadding(md);
     }
 
     &__show {
-      padding: usePadding(md);
       height: inherit;
+      padding: usePadding(md);
     }
   }
 }

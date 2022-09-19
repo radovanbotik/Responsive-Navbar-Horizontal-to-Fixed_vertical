@@ -45,6 +45,7 @@ header .navigation {
 header .navigation__logo {
   display: flex;
   align-items: center;
+  padding: 1.5ex;
   gap: 2ex;
 }
 header .navigation__logo img {
@@ -80,11 +81,12 @@ header .dropdown {
   header .dropdown {
     height: 100%;
     flex-direction: column;
+    padding: 1.5ex;
   }
 }
 header .dropdown__show {
-  padding: 1.5ex;
   height: inherit;
+  padding: 1.5ex;
 }
 
 main {

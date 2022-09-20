@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Quattrocento&family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;1,300&family=Old+Standard+TT:ital@0;1&display=swap");
 
 @font-face {
   font-family: "Futura";
@@ -11,12 +11,17 @@ $colors: (
 );
 
 $fonts: (
-  Oswald: "Oswald",
-  Quattrocento: "Quattrocento",
+  Muli: "Mulish",
+  OldStandardTT: "Old Standard TT",
 );
 $screen-large: 800px;
+// @mixin screen-lg {
+//   @media (min-width: #{$screen-large}) {
+//     @content;
+//   }
+// }
 @mixin screen-lg {
-  @media (min-width: #{$screen-large}) {
+  @media (min-width: 800px) {
     @content;
   }
 }
@@ -51,7 +56,7 @@ $sizes: (
 }
 
 body {
-  font-family: useFont(Quattrocento);
+  font-family: useFont(Mulish);
   display: grid;
   @include screen-lg {
     grid-template-columns: max-content auto;
@@ -61,11 +66,10 @@ ul {
   list-style: none;
 }
 a {
-  font-family: inherit;
   text-decoration: none;
+  text-transform: capitalize;
 }
 header {
-  background-color: fuchsia;
   .navigation {
     position: sticky;
     padding: useSize(xl) useSize(sm);
@@ -74,13 +78,18 @@ header {
     align-items: center;
     &__logo {
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      // align-items: center;
       gap: 2ex;
-      img {
-        width: 60px;
+      .image {
+        width: 20ex;
+        aspect-ratio: 3/1;
+        border: 1px solid black;
       }
       h1 {
         text-transform: uppercase;
+        font-family: useFont(OldStandardTT);
+        font-style: italic;
 
         @include screen-lg {
           // white-space: pre-wrap;
@@ -95,7 +104,6 @@ header {
       display: grid;
       place-items: center;
       span {
-        color: white;
         font-size: 2rem;
       }
       @include screen-lg {
@@ -104,34 +112,83 @@ header {
     }
   }
   .dropdown {
+    font-family: useFont(OldStandardTT);
     height: 0;
-    // opacity: 0;
     overflow: hidden;
     display: flex;
-    flex-direction: row;
-    justify-content: end;
-    align-content: center;
+    flex-direction: column;
     gap: 1em;
-    transition: clip-path 350ms ease-out 150ms;
-    clip-path: polygon(0 100%, 0 100%, 0 0, 0 0);
+
+    &__show {
+      height: auto;
+      padding: 0 0 useSize(xl) 0;
+      // clip-path: polygon(100% 100%, 0 100%, 0 0, 100% 0);
+      .dropdown__item {
+        clip-path: polygon(100% 100%, 0 100%, 0 0, 100% 0);
+      }
+    }
+    &__item {
+      cursor: pointer;
+      padding: useSize(xs) useSize(sm);
+      // margin: 0 useSize(xl);
+      border: 1px solid white;
+      display: flex;
+      justify-content: center;
+      transition: clip-path 300ms ease-out;
+      clip-path: polygon(0 100%, 0 100%, 0 0, 0 0);
+
+      @include screen-lg {
+        border: none;
+        justify-content: start;
+        clip-path: none;
+      }
+    }
+
+    li:nth-child(2) {
+      transition-delay: 300ms;
+    }
+    li:nth-child(3) {
+      transition-delay: 600ms;
+    }
+    li:nth-child(4) {
+      transition-delay: 900ms;
+    }
     @include screen-lg {
       clip-path: none;
       height: 100%;
       flex-direction: column;
       justify-content: start;
     }
-
-    &__show {
-      height: auto;
-      // opacity: 1;
-      clip-path: polygon(100% 100%, 0 100%, 0 0, 100% 0);
-    }
-    &__item {
-      cursor: pointer;
-      padding: useSize(md);
-    }
   }
 }
 main {
-  height: 400vh;
+  height: 500vh;
+  display: grid;
+  grid-template-columns: 4vw repeat(4, (1rem 1fr 1rem)) 4vw;
+  grid-template-rows: 1fr 6em 1fr 6em repeat(5, 1fr);
+
+  .story-yellow {
+    grid-column: 2/14;
+    background-color: yellow;
+  }
+  .story-green {
+    grid-row: 2 / span 1;
+    background-color: green;
+    grid-column: 3/4;
+  }
+  .story-blue {
+    grid-row: 3 / span 2;
+    background-color: blue;
+    grid-column: 7/15;
+  }
+  .story-red {
+    grid-row: 2 / span 3;
+    background-color: red;
+    grid-column: 4/7;
+  }
+  .story-gold {
+    grid-column: 10/15;
+    background-color: gold;
+    grid-row: 4 / span 1;
+  }
 }
